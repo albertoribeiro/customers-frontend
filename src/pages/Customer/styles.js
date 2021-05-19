@@ -66,9 +66,10 @@ export const FormClient = styled(Form)`
   form {
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
+    margin-top: 70px !important;
   }
 
+  
   button[type='submit'] {
     margin: 0 30px 20px 30px;
     background: #02a5e7;
@@ -79,7 +80,7 @@ export const FormClient = styled(Form)`
     font-size: 16px;
     transition: background 0.2s;
     padding: 20px 0;
-
+    
     &:hover {
       background: ${lighten(0.08, '#02A5E7')};
     }
@@ -89,14 +90,14 @@ export const FormClient = styled(Form)`
     margin: 17px;
   }
 
-  input {
+  input  {
     background: rgba(0, 0, 0, 0.1);
     border: 0;
     border-radius: 4px;
     height: 44px;
     padding: 0 15px;
     color: #005d83;
-    margin: 0 0 15px;
+    margin: 0 30px 10px 30px !important;
 
     &::placeholder {
       color: rgba(0, 0, 0, 0.4);
@@ -182,3 +183,4 @@ export const Scroll = styled(PerfectScrollbar)`
   max-height: 10rem;
   padding: 0.5rem 1rem;
 `;
+ 

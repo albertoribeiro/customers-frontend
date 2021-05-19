@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveCustomerRequest } from '~/store/modules/customer/actions';
 
-import { Container, FormClient } from './styles';
+import { Container, FormClient, GridForm } from './styles';
 
 import Alert from '~/components/Alert';
 import api from '~/services/api';
@@ -92,13 +92,13 @@ export default function Customer() {
         </div>
         <FormClient initialData={customer} schema={schema} onSubmit={handleSubmit}>
           <Input name="id" hidden />
-          <Input name='name' placeholder="Name" />          
-          <Input name='birthday' placeholder="Birthday" />         
-          <Input name='email' placeholder="E-Mail" />         
+          <Input name='name' placeholder="Name" />  
+          <Input name='document' placeholder="Document" />
+          <Input name='birthday' placeholder="Birthday" />   
+          <Input name='email' placeholder="E-Mail" />  
+          <Input name='phone' placeholder="Phone Number" />  
           <Input name='address' placeholder="Full Address" />         
           <Input name='zip' placeholder="Zip Code" />         
-          <Input name='phone' placeholder="Phone Number" />   
-          <Input name='document' placeholder="Document" />
           <button type="submit">{loading ? 'Loading...' : 'Save'}</button>
         </FormClient>
       </Paper>
