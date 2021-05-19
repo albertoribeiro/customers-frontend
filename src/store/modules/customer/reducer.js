@@ -26,7 +26,7 @@ export default function customer(state = initialState, action) {
 
       case GET_CUSTOMER_SUCCESS: {
         draft.loading = false;
-        draft.customer = action.payload.data;
+        draft.customer = action.payload
         break;
       }
 

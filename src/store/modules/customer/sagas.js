@@ -11,13 +11,12 @@ import {
   getCustomerSuccess,
   getCustomerFailure,
 } from './actions';
-import { mock } from '../../../services/mock';
+
 
 function* getCustomer(action) {
   try {
-    // const response = yield call(api.get, `/customers/${action.payload}`);
-    const response = mock.getCustomerById(action.payload)
-    yield put(getCustomerSuccess(response.data));
+    const response = yield call(api.get,`/customers/${action.payload}`);
+    yield put(getCustomerSuccess(response.data[0]));
     history.push('/customer');
   } catch (error) {
     console.log(error)
@@ -28,34 +27,36 @@ function* getCustomer(action) {
 function* saveCustomer(action) {
   const customer = action.payload;
   try {
-    // if (customer._id) {
-      // const response = yield call(api.put, `/customers/${customer._id}`, customer);
-      const response = mock.saveCustomer(customer)
-      yield put(getCustomerSuccess(response.data));
-      getCustomer(response.data.data.id);
-    // } else {
-    //   const response = yield call(api.post, `/customers/`, customer);
-    //   yield put(getCustomerSuccess(response.data));
-    //   getCustomer(response.data.data._id);
-    // }
 
-    toast.success('Perfil salvo com sucesso!');
+    const { id } = customer
+    delete customer.id
+    let response = {}
+
+    if (id === '') {
+      response = yield call(api.post, `/customers/`, customer);
+    } else {
+      response = yield call(api.put, `/customers/${id}`, customer);
+    }
+
+    yield put(getCustomerSuccess(response.data));
+    getCustomer(response.data.id);
+    toast.success('Customer saved!');
+
   } catch (error) {
     console.log(error)
-    toast.error('Falha ao salvar perfil');
+    toast.error('Unable to save Customer.');
     yield put(getCustomerFailure());
   }
 }
 
 function* deleteCustomer(action) {
   try {
-    // const response = yield call(api.delete, `/customers/${action.payload}`);
-    const response = mock.deleteCustomer(action.payload)
+    const response = yield call(api.delete,`/customers/${action.payload}`);
     yield put(getCustomerSuccess(response.data));
-    toast.success('Perfil excluído com sucesso!');
+    toast.success('Customer excluded!');
     history.push('/home');
   } catch (error) {
-    toast.error('Falha ao excluir perfil');
+    toast.error('Unable to delete Customer.');
     yield put(getCustomerFailure());
   }
 }

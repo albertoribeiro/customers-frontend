@@ -22,10 +22,10 @@ export default function Alert({
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">
-          Não
+          No
         </Button>
         <Button onClick={handleConfirm} color="primary" autoFocus>
-          Sim
+          Yes
         </Button>
       </DialogActions>
     </Dialog>

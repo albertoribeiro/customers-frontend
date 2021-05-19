@@ -15,7 +15,6 @@ import Alert from '~/components/Alert';
 import api from '~/services/api';
 import { toast } from 'react-toastify';
 import history from '~/services/history';
-import { mock } from '~/services/mock';
 
 const schema = Yup.object().shape({
   id: Yup.string(),
@@ -26,10 +25,6 @@ const schema = Yup.object().shape({
   zip: Yup.string(),
   phone: Yup.string(),
   document: Yup.string(),
-  // name: Yup.string()
-  //   .required('O nome é obrigatório')
-  //   .max(50, 'O campo deve ter no máximo 50 caracteres'),
-  // endpoints: Yup.array().required('Selecione ao menos 1 endpoint'),
 });
 
 export default function Customer() {
@@ -56,13 +51,12 @@ export default function Customer() {
     async function deleteClient() {
       setLoading(true);
       try {
-        // await api.delete(`/clients/${id}`);
-        mock.deleteCustomer(id)
-        toast.success('Client excluido com sucesso!');
+        await api.delete(`/customers/${id}`);
+        toast.success('Customer deleted!');
         setLoading(false);
         history.push('/home');
       } catch (error) {
-        toast.error('Não foi possível excluir');
+        toast.error('Unable to delete Customer.');
         setLoading(false);
       }
     }
@@ -80,15 +74,15 @@ export default function Customer() {
               <ArrowBack />
             </IconButton>
           </Link>
-          <InputLabel>Perfis</InputLabel>
+          <InputLabel>Customer</InputLabel>
           {id && (
             <>
               <IconButton color="secondary" onClick={handleClickOpen}>
                 <DeleteOutline />
               </IconButton>
               <Alert
-                title="Atenção"
-                description="Deseja realmente excluir o client?"
+                title="Delete Customer"
+                description="Are you sure you want to delete this customer?"
                 open={open}
                 handleClose={handleClose}
                 handleConfirm={handleConfirm}
@@ -105,7 +99,7 @@ export default function Customer() {
           <Input name='zip' placeholder="Zip Code" />         
           <Input name='phone' placeholder="Phone Number" />   
           <Input name='document' placeholder="Document" />
-          <button type="submit">{loading ? 'Carregando...' : 'Salvar'}</button>
+          <button type="submit">{loading ? 'Loading...' : 'Save'}</button>
         </FormClient>
       </Paper>
     </Container>

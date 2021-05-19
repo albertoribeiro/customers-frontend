@@ -63,7 +63,7 @@ var _customers = [
 
 export const mock = {
   login: data => {
-    if (data.email != "teste@email.com" || data.password != "teste123")
+    if (data.email !== "teste@email.com" || data.password !== "teste123")
       return null; 
 
     return {
@@ -81,14 +81,14 @@ export const mock = {
 
   getCustomerById: id => ({
       data: {
-        data: _customers.filter(x => x.id == id)[0],
+        data: _customers.filter(x => x.id === id)[0],
       }
   }),
 
   saveCustomer: data => { 
-    var customer = _customers.filter(x => x.id == data.id)[0];
+    var customer = _customers.filter(x => x.id === data.id)[0];
     if (customer){
-      var index = _customers.findIndex(x => x.id == customer.id);
+      var index = _customers.findIndex(x => x.id === customer.id);
       _customers.splice(index, 1);
     }
       
@@ -117,7 +117,7 @@ export const mock = {
   },
 
   deleteCustomer: id => {
-    var index = _customers.findIndex(x => x.id == id);
+    var index = _customers.findIndex(x => x.id === id);
     _customers.splice(index, 1);
   },
   

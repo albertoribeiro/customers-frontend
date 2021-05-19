@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import { Form, Input } from '@rocketseat/unform';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+
 
 import logo from '~/assets/logo.png';
 import { loginRequest } from '~/store/modules/login/actions';
@@ -29,9 +29,8 @@ export default function Login() {
       <img width="64px" src={logo} alt="PagaLeve" />
       <Form schema={schema} onSubmit={handleSubmit}>
         <Input type="email" name="email" placeholder="E-mail" />
-        <Input type="password" name="password" placeholder="Senha" />
-        <button type="submit">{loading ? 'Carregando...' : 'Acessar'}</button>
-        {/* <Link to="/reset-password">Esqueci minha senha</Link>  */}
+        <Input type="password" name="password" placeholder="Password" />
+        <button type="submit">{loading ? 'Loading...' : 'Enter'}</button>
       </Form>
     </>
   );

@@ -11,7 +11,6 @@ import {
   loginFailure,
 } from './actions';
 
-import { mock } from '~/services/mock';
 
 export function* login({ payload }) {
   try {
@@ -19,12 +18,8 @@ export function* login({ payload }) {
       email: payload.email,
       password: payload.password,
     });
-    // const response = mock.login({
-    //     email: payload.email,
-    //     password: payload.password,
-    // });
 
-    const { token, user } = response.data.data;
+    const { token, user } = response.data;
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(loginSuccess(token, user));
@@ -42,7 +37,7 @@ export function setToken({ payload }) {
   if (payload) {
     const { token } = payload.login;
     if (token) {
-      api.defaults.headers.Authorization = `Bearer ${token}`;
+      api.defaults.headers.Authorization = `${token}`;
     }
   }
 }

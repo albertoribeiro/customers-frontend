@@ -20,7 +20,7 @@ import { setLastVisited } from '~/store/modules/login/actions';
 import api from '~/services/api';
 import history from '~/services/history';
 import { Container } from './styles';
-import { mock } from '~/services/mock';
+
 
 export default function Home() {
   const lastVisited = useSelector(state => state.login.lastVisited);
@@ -40,9 +40,8 @@ export default function Home() {
       { title: 'Document', field: 'document' }
     ];
 
-    // const response = await api.get('/customers');
-    const response = mock.getCustomers();
-    const customers = response.data.data;
+    const response = await api.get('/customers');
+    const customers = response.data;
     const data = customers.map(customer => ({
       id: customer.id,
       name: customer.name,
@@ -94,7 +93,7 @@ export default function Home() {
               <IconButton button onClick={handleRowClick}>
                 <AddCircleOutline />
               </IconButton>
-              <Tab value="customers" label="Perfis" />
+              <Tab value="customers" label="Customers" />
             </Tabs>
           </AppBar>
         }
@@ -105,16 +104,16 @@ export default function Home() {
           minBodyHeight: '40vh',
         }}
         localization={{
-          toolbar: { searchPlaceholder: 'Pesquisar' },
+          toolbar: { searchPlaceholder: 'Search' },
           pagination: {
-            labelRowsSelect: 'registros',
-            firstAriaLabel: 'Primeira página',
-            previousAriaLabel: 'Página anterior',
-            nextAriaLabel: 'Próxima página',
-            lastAriaLabel: 'Última página',
+            labelRowsSelect: 'Records',
+            firstAriaLabel: 'First Page',
+            previousAriaLabel: 'Previous Page',
+            nextAriaLabel: 'Next Page',
+            lastAriaLabel: 'Last Page',
           },
           body: {
-            emptyDataSourceMessage: 'Não foram encontrados registros...',
+            emptyDataSourceMessage: 'No records found...',
           },
         }}
       />
