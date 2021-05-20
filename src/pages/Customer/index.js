@@ -19,7 +19,7 @@ import history from '~/services/history';
 const schema = Yup.object().shape({
   id: Yup.string(),
   name: Yup.string(),
-  birthday: Yup.string(),
+  birthdate: Yup.string(),
   email: Yup.string(),
   address: Yup.string(),
   zip: Yup.string(),
@@ -94,7 +94,7 @@ export default function Customer() {
           <Input name="id" hidden />
           <Input name='name' placeholder="Name" />  
           <Input name='document' placeholder="Document" />
-          <Input name='birthday' placeholder="Birthday" />   
+          <Input name='date' placeholder="Birthdate" />   
           <Input name='email' placeholder="E-Mail" />  
           <Input name='phone' placeholder="Phone Number" />  
           <Input name='address' placeholder="Full Address" />         

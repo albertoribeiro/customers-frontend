@@ -32,7 +32,7 @@ export default function Home() {
   async function fetchCustomers() {
     const columns = [
       { title: 'Name', field: 'name' },
-      { title: 'Birthday', field: 'birthday' },
+      { title: 'Birthdate', field: 'birthdate' },
       { title: 'E-Mail', field: 'email' },
       { title: 'Full Address', field: 'address' },
       { title: 'Zip Code', field: 'zip' },
@@ -45,7 +45,7 @@ export default function Home() {
     const data = customers.map(customer => ({
       id: customer.id,
       name: customer.name,
-      birthday: customer.birthday,
+      birthdate: customer.birthdate,
       email: customer.email,
       address: customer.address,
       zip: customer.zip,

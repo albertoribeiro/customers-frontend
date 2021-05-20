@@ -39,8 +39,6 @@ function* saveCustomer(action) {
     }
 
     yield put(getCustomerSuccess(response.data));
-    console.log('XXXXXXXXXXXXXXXXXXX')
-    console.log(response.data)
     getCustomer(response.data.id);
     toast.success('Customer saved!');
 
