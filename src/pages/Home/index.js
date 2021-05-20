@@ -90,7 +90,7 @@ export default function Home() {
               onChange={handleChange}
               aria-label="simple tabs example"
             >
-              <IconButton button onClick={handleRowClick}>
+              <IconButton  onClick={handleRowClick}>
                 <AddCircleOutline />
               </IconButton>
               <Tab value="customers" label="Customers" />

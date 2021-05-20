@@ -24,7 +24,7 @@ export default function Alert({
         <Button onClick={handleClose} color="primary">
           No
         </Button>
-        <Button onClick={handleConfirm} color="primary" autoFocus>
+        <Button onClick={handleConfirm} color="primary" autoFocus="true">
           Yes
         </Button>
       </DialogActions>
