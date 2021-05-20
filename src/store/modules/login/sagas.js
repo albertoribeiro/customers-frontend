@@ -20,7 +20,7 @@ export function* login({ payload }) {
     });
 
     const { token, user } = response.data;
-    api.defaults.headers.Authorization = `Bearer ${token}`;
+    api.defaults.headers.Authorization = `${token}`;
 
     yield put(loginSuccess(token, user));
     history.push('/home');

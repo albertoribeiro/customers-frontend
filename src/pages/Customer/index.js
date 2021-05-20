@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveCustomerRequest } from '~/store/modules/customer/actions';
 
-import { Container, FormClient, GridForm } from './styles';
+import { Container, FormClient } from './styles';
 
 import Alert from '~/components/Alert';
 import api from '~/services/api';
