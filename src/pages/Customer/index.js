@@ -94,7 +94,7 @@ export default function Customer() {
           <Input name="id" hidden />
           <Input name='name' placeholder="Name" />  
           <Input name='document' placeholder="Document" />
-          <Input name='date' placeholder="Birthdate" />   
+          <Input name='birthdate' placeholder="Birthdate" />   
           <Input name='email' placeholder="E-Mail" />  
           <Input name='phone' placeholder="Phone Number" />  
           <Input name='address' placeholder="Full Address" />         
